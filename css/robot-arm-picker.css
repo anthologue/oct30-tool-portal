@@ -1,0 +1,126 @@
+/* Drawing colors for the simulator canvas. Same light/dark approach as styles.css. */
+:root {
+  --sim-bg: #f4f4f4;
+  --sim-table: #8a8a8a;
+  --sim-arm: #333333;
+  --sim-joint: #0b57d0;
+  --sim-block: #c2410c;
+  --sim-bin: #5a5a5a;
+}
+
+:root[data-theme="dark"] {
+  --sim-bg: #1e1e1e;
+  --sim-table: #7a7a7a;
+  --sim-arm: #e0e0e0;
+  --sim-joint: #8ab4f8;
+  --sim-block: #ff9d5c;
+  --sim-bin: #a8a8a8;
+}
+
+h2 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.steps {
+  max-width: 40rem;
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.sim {
+  display: grid;
+  gap: 1rem;
+}
+
+.sim-view {
+  background: var(--bg);
+}
+
+#arm-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 560;
+  background: var(--sim-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.status {
+  min-height: 4.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.sim-controls h2 {
+  margin-top: 0;
+}
+
+.control {
+  margin-bottom: 1.25rem;
+}
+
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.control label {
+  font-weight: 600;
+}
+
+.control output {
+  font-variant-numeric: tabular-nums;
+}
+
+.control input[type="range"] {
+  display: block;
+  width: 100%;
+  height: 2rem;
+  margin: 0.25rem 0;
+  accent-color: var(--link);
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* On phones and tablets, keep the drawing in view while the sliders are used. */
+@media (max-width: 55.99rem) and (min-height: 600px) {
+  .sim-view {
+    max-width: 36rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (min-width: 56rem) {
+  .sim {
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+    align-items: start;
+  }
+
+  .sim-view {
+    position: sticky;
+    top: 1rem;
+  }
+}

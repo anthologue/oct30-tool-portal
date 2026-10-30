@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robot Arm Picker · Robotics Tool Portal</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/robot-arm-picker.css">
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="../index.html">Robotics Tool Portal</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Switch to dark theme</button>
+  </header>
+
+  <main>
+    <a class="back-link" href="../index.html">&larr; Back to all tools</a>
+    <h1>Robot Arm Picker</h1>
+    <p class="intro">Move a robot arm with sliders, pick up the block, and drop it into the bin. A <strong>joint</strong> is a place where the arm bends.</p>
+
+    <h2>How to play</h2>
+    <ol class="steps">
+      <li>Use the shoulder and elbow sliders to bring the gripper above the block.</li>
+      <li>Turn the wrist so the gripper points straight down.</li>
+      <li>With the claw open wide, lower the gripper until the fingers are on either side of the block.</li>
+      <li>Close the claw. It stops when it is snug around the block.</li>
+      <li>Lift the block, carry it over the bin, then open the claw to drop it.</li>
+    </ol>
+
+    <div class="sim">
+      <div class="sim-view">
+        <canvas id="arm-canvas" width="800" height="560" role="img" aria-label="Side view of a robot arm standing on a table, with a block to pick up and a bin to drop it in. Use the sliders to move the arm.">
+          Your browser can't show the drawing, but the sliders and messages still work.
+        </canvas>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="sim-controls">
+        <h2>Controls</h2>
+
+        <div class="control">
+          <div class="control-row">
+            <label for="shoulder">Shoulder</label>
+            <output id="shoulder-value" for="shoulder"></output>
+          </div>
+          <input id="shoulder" data-key="shoulder" type="range" min="0" max="180" step="1" value="70">
+          <p class="hint">The joint where the arm meets the base. It raises and lowers the whole arm.</p>
+        </div>
+
+        <div class="control">
+          <div class="control-row">
+            <label for="elbow">Elbow</label>
+            <output id="elbow-value" for="elbow"></output>
+          </div>
+          <input id="elbow" data-key="elbow" type="range" min="-150" max="150" step="1" value="-80">
+          <p class="hint">The joint in the middle of the arm. It bends the forearm up or down.</p>
+        </div>
+
+        <div class="control">
+          <div class="control-row">
+            <label for="wrist">Wrist</label>
+            <output id="wrist-value" for="wrist"></output>
+          </div>
+          <input id="wrist" data-key="wrist" type="range" min="-150" max="150" step="1" value="-80">
+          <p class="hint">The joint just before the gripper. It tilts the gripper.</p>
+        </div>
+
+        <div class="control">
+          <div class="control-row">
+            <label for="grip">Gripper opening</label>
+            <output id="grip-value" for="grip"></output>
+          </div>
+          <input id="grip" data-key="grip" type="range" min="0" max="70" step="1" value="70">
+          <p class="hint">Opens and closes the claw, the "hand" at the end of the arm.</p>
+        </div>
+
+        <button id="reset" class="button" type="button">Reset</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/robot-arm-picker.js"></script>
+</body>
+</html>

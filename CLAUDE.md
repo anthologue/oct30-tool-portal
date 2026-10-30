@@ -33,7 +33,7 @@ A portal where beginners learning robotics try small web tools.
 
 - **Phase 1:** the portal plus its first tool, a robot arm picker simulator. Visitors move each joint with sliders and try to grab a block.
   - [x] Portal built in `index.html`, with a placeholder "Tool 1 — coming soon" card that opens `tools/tool-1.html` and returns via "Back to all tools". Styling is deliberately plain; the visual design is chosen later.
-  - [ ] Build the robot arm picker simulator in place of the placeholder.
+  - [x] Robot arm picker simulator built in `tools/robot-arm-picker.html`, replacing the placeholder (3 joints plus a claw; pick up the block and drop it in the bin). Styling is still plain.
 - **Phase 2:** add more tools, one at a time. (Details to be decided later.)
 - **Phase 3:** polish, such as a way to find tools once there are many. (To be decided later.)
 
