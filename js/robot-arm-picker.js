@@ -422,7 +422,7 @@
       ctx.fillStyle = colors.joint;
       ctx.fill();
       ctx.lineWidth = 3;
-      ctx.strokeStyle = colors.bg;
+      ctx.strokeStyle = colors.arm;
       ctx.stroke();
     });
   }

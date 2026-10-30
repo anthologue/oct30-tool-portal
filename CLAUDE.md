@@ -29,11 +29,20 @@ A portal where beginners learning robotics try small web tools.
 - **Getting back:** every tool page has a "Back to all tools" link at the top, and the site name in the header also links home.
 - **Adding a new tool later:** create `tools/<tool-name>.html` (with its own CSS/JS files named after it), then add one card to the homepage. Reuse the shared files; don't copy them.
 
+### Look and feel
+
+The "Classroom" design: friendly and bold, for beginners.
+
+- **Fonts:** Fredoka for headings, Nunito for body text (loaded from Google Fonts, with system fonts as a fallback).
+- **Colors:** mint background, deep green text, teal buttons and links, yellow accents; a matching dark theme. All colors are CSS variables at the top of `css/styles.css`, so change them there.
+- **Shapes:** thick outlines, rounded corners, and a hard yellow shadow on cards. Buttons are pills.
+
 ### Phases
 
 - **Phase 1:** the portal plus its first tool, a robot arm picker simulator. Visitors move each joint with sliders and try to grab a block.
-  - [x] Portal built in `index.html`, with a placeholder "Tool 1 — coming soon" card that opens `tools/tool-1.html` and returns via "Back to all tools". Styling is deliberately plain; the visual design is chosen later.
-  - [x] Robot arm picker simulator built in `tools/robot-arm-picker.html`, replacing the placeholder (3 joints plus a claw; pick up the block and drop it in the bin). Styling is still plain.
+  - [x] Portal built in `index.html`, with a placeholder "Tool 1 — coming soon" card that opens `tools/tool-1.html` and returns via "Back to all tools".
+  - [x] Robot arm picker simulator built in `tools/robot-arm-picker.html`, replacing the placeholder (3 joints plus a claw; pick up the block and drop it in the bin).
+  - [x] Visual design applied: the "Classroom" look (see Look and feel below).
 - **Phase 2:** add more tools, one at a time. (Details to be decided later.)
 - **Phase 3:** polish, such as a way to find tools once there are many. (To be decided later.)
 

@@ -1,22 +1,37 @@
-/* Theme colors. Light is the default; js/theme.js sets data-theme="dark" on <html>. */
+/* "Classroom" look. Theme colors: light is the default; js/theme.js sets data-theme="dark" on <html>. */
 :root {
-  --bg: #ffffff;
-  --surface: #f4f4f4;
-  --text: #1a1a1a;
-  --text-muted: #4a4a4a;
-  --border: #b8b8b8;
-  --link: #0b57d0;
-  --focus: #0b57d0;
+  --bg: #eef8f4;
+  --surface: #ffffff;
+  --surface-alt: #cdefe4;
+  --text: #12332a;
+  --text-muted: #35574d;
+  --border: #12332a;
+  --link: #0f766e;
+  --focus: #0f766e;
+  --accent: #ffc93c;
+  --on-accent: #12332a;
+  --primary: #0f766e;
+  --on-primary: #ffffff;
+  --block: #d9480f;
+
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fredoka", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root[data-theme="dark"] {
-  --bg: #121212;
-  --surface: #1e1e1e;
-  --text: #f0f0f0;
-  --text-muted: #c4c4c4;
-  --border: #5a5a5a;
-  --link: #8ab4f8;
-  --focus: #8ab4f8;
+  --bg: #0f2a24;
+  --surface: #16382f;
+  --surface-alt: #1f4a3f;
+  --text: #eaf7f1;
+  --text-muted: #b5d6ca;
+  --border: #8bd3c2;
+  --link: #5eead4;
+  --focus: #5eead4;
+  --accent: #ffc93c;
+  --on-accent: #12332a;
+  --primary: #5eead4;
+  --on-primary: #0f2a24;
+  --block: #ff9d5c;
 }
 
 * {
@@ -27,8 +42,16 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
   line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 a {
@@ -38,7 +61,7 @@ a {
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .site-header {
@@ -46,25 +69,49 @@ button:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 1rem;
-  border-bottom: 1px solid var(--border);
+  gap: 0.75rem 1rem;
+  min-height: 5rem;
+  padding: 0.75rem max(1rem, calc((100% - 60rem) / 2 + 1rem));
 }
 
 .site-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   color: var(--text);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
   text-decoration: none;
 }
 
-.theme-toggle {
-  padding: 0.5rem 0.75rem;
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--accent);
+  border: 3px solid var(--border);
+  border-radius: 12px;
+}
+
+.logo polyline,
+.logo line {
+  stroke: var(--on-accent);
+}
+
+/* Pill buttons: the theme toggle and Reset. */
+.theme-toggle,
+.button {
+  padding: 0.5rem 1.125rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 3px solid var(--border);
+  border-radius: 999px;
   font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 800;
   cursor: pointer;
 }
 
@@ -75,39 +122,86 @@ main {
 }
 
 h1 {
-  margin-top: 0;
-  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.25rem, 7vw, 3.375rem);
+  line-height: 1.1;
+}
+
+.highlight {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.12em;
 }
 
 .intro {
   max-width: 40rem;
+  margin: 0;
   color: var(--text-muted);
+  font-size: 1.1875rem;
 }
 
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
 }
 
 .tool-card {
-  display: block;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.125rem;
   background: var(--surface);
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 3px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 6px 6px 0 var(--accent);
   text-decoration: none;
 }
 
 .tool-card:hover {
-  border-color: var(--link);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tool-card {
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+}
+
+.tool-card-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7.5rem;
+  background: var(--surface-alt);
+  border-radius: 14px;
+}
+
+.art-ink {
+  stroke: var(--text);
+}
+
+.art-fill {
+  fill: var(--text);
+}
+
+.art-joint {
+  fill: var(--accent);
+  stroke: var(--text);
+}
+
+.art-block {
+  fill: var(--block);
 }
 
 .tool-card h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.125rem;
+  margin: 0.25rem 0 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
 }
 
 .tool-card p {
@@ -115,7 +209,18 @@ h1 {
   color: var(--text-muted);
 }
 
+.tool-card-cta {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 999px;
+  font-weight: 800;
+}
+
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
